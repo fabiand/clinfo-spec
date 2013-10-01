@@ -12,7 +12,7 @@ URL:     https://github.com/Oblomov/clinfo
 Source0: https://github.com/Oblomov/%{name}/archive/%{gitcommit}.tar.gz#/%{tarball}
 
 BuildRequires: pkgconfig automake autoconf libtool
-BuildRequires: opencl-headers ocl-icd
+BuildRequires: opencl-headers ocl-icd-devel
 
 Requires: opencl-filesystem
 
