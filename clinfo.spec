@@ -1,17 +1,19 @@
-%global gitcommit 7f44937169b1d7d0fb446cc0b1878cf0c09017f1
+%global commit 7f44937169b1d7d0fb446cc0b1878cf0c09017f1
+%global commitdate 20130930
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global gitversion .git%{commitdate}.%{shortcommit}
 
 Summary: Enumerate OpenCL platforms and devices
 Name:    clinfo
 Version: 0.1
-Release: 0.1%{?dist}
+Release: 0.1%{?gitversion}%{?dist}
 License: Public Domain
 Group:   System Environment/Libraries
 URL:     https://github.com/Oblomov/clinfo
 
-%global tarball %{name}-20131001git%{gitcommit}.tar.gz
-Source0: https://github.com/Oblomov/%{name}/archive/%{gitcommit}.tar.gz#/%{tarball}
+%global tarball %{name}-%{gitversion}.tar.gz
+Source0: https://github.com/Oblomov/%{name}/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
 
-BuildRequires: pkgconfig automake autoconf libtool
 BuildRequires: opencl-headers ocl-icd-devel
 
 Requires: opencl-filesystem
@@ -27,7 +29,7 @@ platforms).
 
 
 %prep
-%setup -q -n %{name}-%{gitcommit}
+%setup -q -n %{name}-%{commit}
 
 
 %build
@@ -38,7 +40,7 @@ make %{?_smp_mflags}
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
-%{__install} clinfo %{buildroot}/%{_bindir}/
+%{__install} -m0755 clinfo %{buildroot}/%{_bindir}/
 
 mkdir -p %{buildroot}/%{_mandir}/man1
 %{__cp} -a man/clinfo.1 %{buildroot}/%{_mandir}/man1/
