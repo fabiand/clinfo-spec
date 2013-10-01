@@ -1,5 +1,5 @@
 %global commit 7f44937169b1d7d0fb446cc0b1878cf0c09017f1
-%global commitdate 20130930
+%global commitdate 20131001
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global gitversion .git%{commitdate}.%{shortcommit}
 
@@ -56,5 +56,5 @@ mkdir -p %{buildroot}/%{_mandir}/man1
 %{_mandir}/man1/clinfo.1.gz
 
 %changelog
-* Tue Oct 01 2013 Fabian Deutsch <fabiand@fedoraproject.org> - 0.1-0.1
+* Tue Oct 01 2013 Fabian Deutsch <fabiand@fedoraproject.org> - 0.1-0.1.git20131001.7f44937
 - Initial package
