@@ -29,16 +29,10 @@ platforms).
 %prep
 %setup -q -n %{name}-%{gitcommit}
 
-# Hack:
-# Create a dummy configure so we can later run configure
-# which also sets C and LDFLAGS which are needed at build-time
-touch configure ; chmod a+x configure
-
 
 %build
-# Hack:
-# Run confiure to set env CFLAGS and LDFLAGS
-%configure
+# configure doesn't exist, but we need the exported CFLAGS and friends
+%configure || :
 make %{?_smp_mflags}
 
 
