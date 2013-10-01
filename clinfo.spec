@@ -41,7 +41,7 @@ mkdir -p %{buildroot}/%{_bindir}
 %{__install} clinfo %{buildroot}/%{_bindir}/
 
 mkdir -p %{buildroot}/%{_mandir}/man1
-%{__cp} man/clinfo.1 %{buildroot}/%{_mandir}/man1/
+%{__cp} -a man/clinfo.1 %{buildroot}/%{_mandir}/man1/
 
 
 %post -p /sbin/ldconfig
